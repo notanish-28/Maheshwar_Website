@@ -1,0 +1,98 @@
+<div class="min-h-screen bg-rajasthan-sand py-12">
+  <div class="max-w-7xl mx-auto px-4">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <h1 class="text-5xl font-rajasthan text-rajasthan-red mb-4">Master Artisans</h1>
+      <p class="text-xl text-gray-700 max-w-3xl mx-auto">
+        Meet the skilled hands behind our exquisite Maheshwari textiles. Each artisan brings generations of knowledge 
+        and unparalleled expertise to create fabrics that carry forward our rich heritage.
+      </p>
+    </div>
+
+    <!-- Artisans Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+      <div *ngFor="let artisan of artisans" class="bg-white rounded-2xl shadow-xl overflow-hidden">
+        <!-- Artisan Image -->
+        <div class="h-80 bg-gradient-to-br from-rajasthan-orange to-rajasthan-yellow flex items-center justify-center">
+          <div class="text-center text-white">
+            <div class="w-32 h-32 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-4xl font-rajasthan">{{ artisan.name.split(' ')[0][0] }}</span>
+            </div>
+            <h3 class="text-3xl font-rajasthan">{{ artisan.name }}</h3>
+            <p class="text-lg opacity-90">{{ artisan.experience }} of experience</p>
+          </div>
+        </div>
+
+        <!-- Artisan Details -->
+        <div class="p-8">
+          <div class="mb-6">
+            <h4 class="text-lg font-semibold text-rajasthan-blue mb-2">Specialty</h4>
+            <p class="text-gray-700">{{ artisan.specialty }}</p>
+          </div>
+          
+          <div class="mb-6">
+            <h4 class="text-lg font-semibold text-rajasthan-blue mb-2">Bio</h4>
+            <p class="text-gray-700">{{ artisan.bio }}</p>
+          </div>
+
+          <div class="border-t pt-6">
+            <blockquote class="text-rajasthan-red italic text-center">
+              "{{ artisan.quote }}"
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Weaving Process -->
+    <div class="bg-white rounded-2xl shadow-xl p-8 mb-16">
+      <h2 class="text-3xl font-rajasthan text-rajasthan-red text-center mb-8">The Weaving Journey</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-rajasthan-red rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-white font-bold">1</span>
+          </div>
+          <h3 class="font-semibold text-rajasthan-blue mb-2">Hand Dyeing</h3>
+          <p class="text-sm text-gray-600">Natural dyes prepared using traditional methods</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-rajasthan-orange rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-white font-bold">2</span>
+          </div>
+          <h3 class="font-semibold text-rajasthan-blue mb-2">Warping</h3>
+          <p class="text-sm text-gray-600">Precise thread arrangement on the loom</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-rajasthan-yellow rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-white font-bold">3</span>
+          </div>
+          <h3 class="font-semibold text-rajasthan-blue mb-2">Weaving</h3>
+          <p class="text-sm text-gray-600">Creating patterns on traditional pit looms</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-rajasthan-blue rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-white font-bold">4</span>
+          </div>
+          <h3 class="font-semibold text-rajasthan-blue mb-2">Finishing</h3>
+          <p class="text-sm text-gray-600">Quality check and final touches</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center">
+      <h2 class="text-3xl font-rajasthan text-rajasthan-red mb-4">Support Heritage Craftsmanship</h2>
+      <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+        Every purchase helps preserve traditional weaving techniques and supports artisan communities.
+      </p>
+      <button routerLink="/shop" 
+              class="bg-rajasthan-red text-white px-8 py-3 rounded-lg font-semibold hover:bg-rajasthan-orange transition duration-300">
+        Shop Artisan Collection
+      </button>
+    </div>
+  </div>
+</div>

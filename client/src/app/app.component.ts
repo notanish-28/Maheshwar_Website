@@ -1,13 +1,23 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { NavbarComponent } from './component/components/navbar/navbar.component';
+import { FooterComponent } from './component/components/footer/footer.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [RouterOutlet, NavbarComponent, FooterComponent],
+  template: `
+    <div class="min-h-screen flex flex-col">
+      <app-navbar></app-navbar>
+      <main class="flex-grow">
+        <router-outlet></router-outlet>
+      </main>
+      <app-footer></app-footer>
+    </div>
+  `
 })
 export class AppComponent {
-  title = 'client';
+  title = 'Maheshwari Textiles';
 }
