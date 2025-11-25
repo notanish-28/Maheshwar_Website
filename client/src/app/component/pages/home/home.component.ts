@@ -24,7 +24,7 @@ export class HomeComponent {
       description: 'Each piece tells a story of skill and tradition'
     },
     {
-      image: 'assets/images/Carousel_1.jpg',
+      image: 'assets/images/heritage-weaving3.jpg',
       title: 'Elegant Reversible Borders',
       description: 'Signature geometric motifs inspired by temple architecture'
     }
