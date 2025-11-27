@@ -1,53 +1,63 @@
-    <nav class="bg-rajasthan-sand shadow-lg relative rajasthan-pattern">
+<nav class="bg-white shadow-md sticky top-0 z-50 border-b-4 border-rajasthan-red">
       <div class="max-w-7xl mx-auto px-4">
-        <div class="flex justify-between items-center py-4">
+        <div class="flex justify-between items-center py-5">
           <!-- Logo -->
-          <div class="flex items-center space-x-2">
-            <div class="w-10 h-10 bg-rajasthan-red rounded-full flex items-center justify-center">
-              <span class="text-white font-rajasthan font-bold text-lg">M</span>
+          <div class="flex items-center space-x-3 group cursor-pointer">
+            <div class="w-12 h-12 bg-gradient-to-br from-rajasthan-red via-rajasthan-orange to-rajasthan-yellow rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition duration-300">
+              <span class="text-white font-rajasthan font-bold text-xl">M</span>
             </div>
-            <span class="text-2xl font-rajasthan text-rajasthan-red">Maheshwari Textiles</span>
+            <div>
+              <span class="text-2xl font-rajasthan text-rajasthan-red block leading-tight">Maheshwari</span>
+              <span class="text-sm text-rajasthan-orange font-medium">Handwoven Heritage</span>
+            </div>
           </div>
 
           <!-- Desktop Menu -->
-          <div class="hidden md:flex items-center space-x-8">
+          <div class="hidden md:flex items-center space-x-2">
             <a 
               [routerLink]="['/']" 
-              class="font-medium transition duration-300 px-3 py-2 rounded-lg"
-              [class]="activeRoute === '/' ? 'bg-rajasthan-red text-white' : 'text-rajasthan-blue hover:text-rajasthan-red hover:bg-rajasthan-sand'">
-              Home
+              class="font-medium transition-all duration-300 px-4 py-2 rounded-lg relative group"
+              [class]="activeRoute === '/' ? 'text-rajasthan-red' : 'text-gray-700 hover:text-rajasthan-red'">
+              <span class="relative z-10">Home</span>
+              <span class="absolute inset-0 bg-rajasthan-sand rounded-lg transform scale-0 group-hover:scale-100 transition duration-300" 
+                    [class.scale-100]="activeRoute === '/'"></span>
             </a>
             <a 
               [routerLink]="['/about-artisans']" 
-              class="font-medium transition duration-300 px-3 py-2 rounded-lg"
-              [class]="activeRoute === '/about-artisans' ? 'bg-rajasthan-red text-white' : 'text-rajasthan-blue hover:text-rajasthan-red hover:bg-rajasthan-sand'">
-              About Artisans
+              class="font-medium transition-all duration-300 px-4 py-2 rounded-lg relative group"
+              [class]="activeRoute === '/about-artisans' ? 'text-rajasthan-red' : 'text-gray-700 hover:text-rajasthan-red'">
+              <span class="relative z-10">About Artisans</span>
+              <span class="absolute inset-0 bg-rajasthan-sand rounded-lg transform scale-0 group-hover:scale-100 transition duration-300"
+                    [class.scale-100]="activeRoute === '/about-artisans'"></span>
             </a>
             <a 
               [routerLink]="['/about-maheshwari']" 
-              class="font-medium transition duration-300 px-3 py-2 rounded-lg"
-              [class]="activeRoute === '/about-maheshwari' ? 'bg-rajasthan-red text-white' : 'text-rajasthan-blue hover:text-rajasthan-red hover:bg-rajasthan-sand'">
-              About Maheshwari
+              class="font-medium transition-all duration-300 px-4 py-2 rounded-lg relative group"
+              [class]="activeRoute === '/about-maheshwari' ? 'text-rajasthan-red' : 'text-gray-700 hover:text-rajasthan-red'">
+              <span class="relative z-10">About Maheshwari</span>
+              <span class="absolute inset-0 bg-rajasthan-sand rounded-lg transform scale-0 group-hover:scale-100 transition duration-300"
+                    [class.scale-100]="activeRoute === '/about-maheshwari'"></span>
             </a>
             <a 
               [routerLink]="['/shop']" 
-              class="font-medium transition duration-300 px-3 py-2 rounded-lg"
-              [class]="activeRoute === '/shop' ? 'bg-rajasthan-red text-white' : 'text-rajasthan-blue hover:text-rajasthan-red hover:bg-rajasthan-sand'">
-              Shop
+              class="font-medium transition-all duration-300 px-4 py-2 rounded-lg relative group"
+              [class]="activeRoute === '/shop' ? 'text-rajasthan-red' : 'text-gray-700 hover:text-rajasthan-red'">
+              <span class="relative z-10">Shop</span>
+              <span class="absolute inset-0 bg-rajasthan-sand rounded-lg transform scale-0 group-hover:scale-100 transition duration-300"
+                    [class.scale-100]="activeRoute === '/shop'"></span>
             </a>
             <a 
               [routerLink]="['/contact']" 
-              class="font-medium transition duration-300 px-3 py-2 rounded-lg"
-              [class]="activeRoute === '/contact' ? 'bg-rajasthan-red text-white' : 'text-rajasthan-blue hover:text-rajasthan-red hover:bg-rajasthan-sand'">
-              Contact
+              class="ml-2 font-medium transition-all duration-300 px-6 py-2.5 rounded-lg bg-gradient-to-r from-rajasthan-red to-rajasthan-orange text-white shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+              Meet The Team
             </a>
           </div>
 
           <!-- Mobile menu button -->
           <div class="md:hidden">
-            <button (click)="toggleMenu()" class="text-rajasthan-blue focus:outline-none">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+            <button (click)="toggleMenu()" class="text-rajasthan-red focus:outline-none p-2 rounded-lg hover:bg-rajasthan-sand transition duration-300">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round"
                       [attr.d]="isMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'"></path>
               </svg>
             </button>
@@ -55,42 +65,41 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div *ngIf="isMenuOpen" class="md:hidden absolute top-full left-0 right-0 bg-rajasthan-sand shadow-lg z-50 border-t border-rajasthan-orange">
-          <div class="px-4 py-2 space-y-2">
+        <div *ngIf="isMenuOpen" class="md:hidden pb-4">
+          <div class="space-y-2 pt-2">
             <a 
               [routerLink]="['/']" 
               (click)="isMenuOpen = false"
-              class="block font-medium py-3 px-4 rounded-lg transition duration-300"
-              [class]="activeRoute === '/' ? 'bg-rajasthan-red text-white' : 'text-rajasthan-blue hover:text-rajasthan-red hover:bg-white'">
+              class="block font-medium py-3 px-4 rounded-xl transition-all duration-300 transform hover:translate-x-2"
+              [class]="activeRoute === '/' ? 'bg-gradient-to-r from-rajasthan-red to-rajasthan-orange text-white shadow-lg' : 'text-gray-700 hover:bg-rajasthan-sand hover:text-rajasthan-red'">
               Home
             </a>
             <a 
               [routerLink]="['/about-artisans']" 
               (click)="isMenuOpen = false"
-              class="block font-medium py-3 px-4 rounded-lg transition duration-300"
-              [class]="activeRoute === '/about-artisans' ? 'bg-rajasthan-red text-white' : 'text-rajasthan-blue hover:text-rajasthan-red hover:bg-white'">
+              class="block font-medium py-3 px-4 rounded-xl transition-all duration-300 transform hover:translate-x-2"
+              [class]="activeRoute === '/about-artisans' ? 'bg-gradient-to-r from-rajasthan-red to-rajasthan-orange text-white shadow-lg' : 'text-gray-700 hover:bg-rajasthan-sand hover:text-rajasthan-red'">
               About Artisans
             </a>
             <a 
               [routerLink]="['/about-maheshwari']" 
               (click)="isMenuOpen = false"
-              class="block font-medium py-3 px-4 rounded-lg transition duration-300"
-              [class]="activeRoute === '/about-maheshwari' ? 'bg-rajasthan-red text-white' : 'text-rajasthan-blue hover:text-rajasthan-red hover:bg-white'">
+              class="block font-medium py-3 px-4 rounded-xl transition-all duration-300 transform hover:translate-x-2"
+              [class]="activeRoute === '/about-maheshwari' ? 'bg-gradient-to-r from-rajasthan-red to-rajasthan-orange text-white shadow-lg' : 'text-gray-700 hover:bg-rajasthan-sand hover:text-rajasthan-red'">
               About Maheshwari
             </a>
             <a 
               [routerLink]="['/shop']" 
               (click)="isMenuOpen = false"
-              class="block font-medium py-3 px-4 rounded-lg transition duration-300"
-              [class]="activeRoute === '/shop' ? 'bg-rajasthan-red text-white' : 'text-rajasthan-blue hover:text-rajasthan-red hover:bg-white'">
+              class="block font-medium py-3 px-4 rounded-xl transition-all duration-300 transform hover:translate-x-2"
+              [class]="activeRoute === '/shop' ? 'bg-gradient-to-r from-rajasthan-red to-rajasthan-orange text-white shadow-lg' : 'text-gray-700 hover:bg-rajasthan-sand hover:text-rajasthan-red'">
               Shop
             </a>
             <a 
               [routerLink]="['/contact']" 
               (click)="isMenuOpen = false"
-              class="block font-medium py-3 px-4 rounded-lg transition duration-300"
-              [class]="activeRoute === '/contact' ? 'bg-rajasthan-red text-white' : 'text-rajasthan-blue hover:text-rajasthan-red hover:bg-white'">
-              Contact
+              class="block font-medium py-3 px-4 rounded-xl transition-all duration-300 transform hover:translate-x-2 bg-gradient-to-r from-rajasthan-red to-rajasthan-orange text-white shadow-lg">
+              Contact Us
             </a>
           </div>
         </div>
