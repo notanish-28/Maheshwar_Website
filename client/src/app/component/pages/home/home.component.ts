@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 })
 export class HomeComponent {
   currentSlide = 0;
+  autoSlideInterval: any;
   
   slides = [
     {
@@ -24,7 +25,7 @@ export class HomeComponent {
       description: 'Each piece tells a story of skill and tradition'
     },
     {
-      image: 'assets/images/Carousel_1.jpg',
+      image: 'assets/images/heritage-weaving3.jpg',
       title: 'Elegant Reversible Borders',
       description: 'Signature geometric motifs inspired by temple architecture'
     }
@@ -51,15 +52,37 @@ export class HomeComponent {
     }
   ];
 
+  ngOnInit() {
+    this.startAutoSlide();
+  }
+
+  ngOnDestroy() {
+    this.stopAutoSlide();
+  }
+
+  startAutoSlide() {
+    this.autoSlideInterval = setInterval(() => {
+      this.nextSlide();
+    }, 5000); // Change slide every 5 seconds
+  }
+
+  stopAutoSlide() {
+    if (this.autoSlideInterval) {
+      clearInterval(this.autoSlideInterval);
+    }
+  }
+
   nextSlide() {
     this.currentSlide = (this.currentSlide + 1) % this.slides.length;
   }
 
   prevSlide() {
-    this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+    this.currentSlide = this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1;
   }
 
   goToSlide(index: number) {
     this.currentSlide = index;
+    this.stopAutoSlide();
+    this.startAutoSlide(); // Restart auto-slide after manual navigation
   }
 }

@@ -44,3 +44,4 @@ export class ContactComponent {
 
    teamPhotoUrl = 'assets/images/team.jpg';
 }
+
