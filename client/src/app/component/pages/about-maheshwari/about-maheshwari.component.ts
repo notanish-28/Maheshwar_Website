@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-about-maheshwari',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './about-maheshwari.component.html',
   styleUrls: ['./about-maheshwari.component.css']
 })
@@ -12,38 +13,39 @@ export class AboutMaheshwariComponent {
   features = [
     {
       title: 'Historic Origins',
-      description: 'Flourished under Queen Ahilyabai Holkar in 18th century',
+      description: 'The craft flourished under the royal patronage of Queen Ahilyabai Holkar in the 18th century.',
       icon: '🏛️'
     },
     {
       title: 'Signature Motifs', 
-      description: 'Geometric patterns inspired by temple architecture',
+      description: 'Geometric patterns inspired by the detailing of Maheshwar Fort and temple architecture.',
       icon: '🔷'
     },
     {
       title: 'Reversible Borders',
-      description: 'Unique double-sided border designs',
-      icon: '🔄'
+      description: 'The unique "Bugdi" border design that looks identical on both sides of the fabric.',
+      icon: '↔️'
     },
     {
-      title: 'Lightweight Fabric',
-      description: 'Perfect balance of silk warp and cotton weft',
-      icon: '👗'
+      title: 'Lightweight Texture',
+      description: 'A perfect handwoven balance of silk in the warp and cotton in the weft.',
+      icon: '✨'
     }
   ];
 
+  // Updated with specific HEX codes for authentic heritage look
   colors = [
-    { name: 'Rani Pink', code: 'bg-pink-500' },
-    { name: 'Angoori Green', code: 'bg-green-500' },
-    { name: 'Madhu Yellow', code: 'bg-yellow-400' },
-    { name: 'Neel Blue', code: 'bg-blue-500' },
-    { name: 'Mustard', code: 'bg-yellow-500' }
+    { name: 'Rani (Deep Pink)', code: '#9F1D35' },
+    { name: 'Angoori (Grape)', code: '#8A9A5B' },
+    { name: 'Madhu (Mustard)', code: '#E3A857' },
+    { name: 'Neel (Indigo)', code: '#2B3F5C' },
+    { name: 'Tapavan (Rust)', code: '#8B4513' }
   ];
 
   motifs = [
-    { name: 'Leher', description: 'Wave patterns inspired by Narmada river' },
-    { name: 'Chatai', description: 'Mat weave geometric designs' },
-    { name: 'Kangi', description: 'Comb-like decorative patterns' },
-    { name: 'Temple', description: 'Architectural inspired carvings' }
+    { name: 'The Leher', description: 'Zig-zag wave pattern symbolizing the Narmada river currents.' },
+    { name: 'The Chatai', description: 'Geometric mat pattern representing woven mats.' },
+    { name: 'The Kangi', description: 'Small comb-like serrated patterns on the border.' },
+    { name: 'The Temple', description: 'Architectural inspired spire carvings found on the Ghats.' }
   ];
 }

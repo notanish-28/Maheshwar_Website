@@ -41,4 +41,6 @@ export class ContactComponent {
     alert('Thank you for your message! We will get back to you soon.');
     // Form submission logic would go here
   }
+
+   teamPhotoUrl = 'assets/images/team.jpg';
 }

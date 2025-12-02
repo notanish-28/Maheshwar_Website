@@ -1,117 +1,239 @@
-<div class="min-h-screen">
-      <!-- Hero Slider -->
-      <section class="relative h-96 md:h-[80vh] overflow-hidden rajasthan-pattern mt-0">
-        <div class="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
-        
-        <div class="relative h-full transition-transform duration-500 ease-in-out flex" 
-             [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
-          <div *ngFor="let slide of slides; let i = index" class="w-full h-full flex-shrink-0 relative">
-            <!-- Actual Image Background -->
-            <div class="w-full h-full bg-cover bg-center" 
-                 [style.background-image]="'url(' + slide.image + ')'">
-              <div class="w-full h-full bg-black bg-opacity-30 flex items-center justify-center">
-                <div class="text-center text-white z-20 relative px-4">
-                  <h1 class="text-4xl md:text-6xl font-rajasthan mb-4">{{ slide.title }}</h1>
-                  <p class="text-xl md:text-2xl max-w-2xl mx-auto">{{ slide.description }}</p>
-                  <button [routerLink]="['/shop']" class="mt-8 bg-white text-rajasthan-red px-8 py-3 rounded-full font-semibold hover:bg-rajasthan-sand transition duration-300">
-                    Explore Collection
-                  </button>
-                </div>
-              </div>
+<div class="min-h-screen bg-cream-100">
+  <!-- Hero Slider with Auto-play -->
+  <section class="relative h-[70vh] md:h-[85vh] overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-forest-900/60 via-forest-900/30 to-forest-900/70 z-10"></div>
+
+    <div class="relative h-full transition-transform duration-700 ease-in-out flex"
+      [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
+      <div *ngFor="let slide of slides; let i = index" class="w-full h-full flex-shrink-0 relative">
+        <div class="w-full h-full bg-cover bg-center transition-transform duration-700 hover:scale-105"
+          [style.background-image]="'url(' + slide.image + ')'">
+          <div class="w-full h-full flex items-center justify-center">
+            <div class="text-center text-white z-20 relative px-4 animate-fade-in">
+              <h1 class="text-5xl md:text-7xl font-display mb-6 drop-shadow-2xl tracking-wide">{{ slide.title }}</h1>
+              <p class="text-xl md:text-3xl max-w-3xl mx-auto mb-8 drop-shadow-lg font-light">{{ slide.description }}
+              </p>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <!-- Slider Controls -->
-        <button (click)="prevSlide()" class="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-20 rounded-full p-2 hover:bg-opacity-30 transition duration-300">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-          </svg>
-        </button>
-        <button (click)="nextSlide()" class="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-20 rounded-full p-2 hover:bg-opacity-30 transition duration-300">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-          </svg>
-        </button>
+    <!-- Slider Controls -->
+    <button (click)="prevSlide()"
+      class="absolute left-6 top-1/2 transform -translate-y-1/2 z-20 bg-cream-50/30 backdrop-blur-sm rounded-full p-3 hover:bg-sage-500/50 transition-all duration-300 hover:scale-110">
+      <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <button (click)="nextSlide()"
+      class="absolute right-6 top-1/2 transform -translate-y-1/2 z-20 bg-cream-50/30 backdrop-blur-sm rounded-full p-3 hover:bg-sage-500/50 transition-all duration-300 hover:scale-110">
+      <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
 
-        <!-- Slider Indicators -->
-        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 flex space-x-2">
-          <button *ngFor="let slide of slides; let i = index" 
-                  (click)="goToSlide(i)"
-                  class="w-3 h-3 rounded-full transition duration-300"
-                  [class]="i === currentSlide ? 'bg-white' : 'bg-white bg-opacity-50'">
-          </button>
+    <!-- Slider Indicators -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3">
+      <button *ngFor="let slide of slides; let i = index" (click)="goToSlide(i)"
+        class="transition-all duration-300 rounded-full"
+        [class]="i === currentSlide ? 'w-12 h-3 bg-cream-100' : 'w-3 h-3 bg-cream-100/50 hover:bg-cream-100/75'">
+      </button>
+    </div>
+  </section>
+
+  <!-- Team Photos Section (replacing Collections) -->
+  <!-- Team/Collection Section -->
+<section class="py-20 bg-gradient-to-b from-cream-50 to-cream-100">
+  <div class="max-w-6xl mx-auto px-4">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-5xl font-display text-forest-800 mb-4">Our Collection</h2>
+      <p class="text-xl text-sage-700 max-w-2xl mx-auto">Meet the talented hands and hearts behind every piece</p>
+    </div>
+
+    <!-- Split Card Container -->
+    <div class="group relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden mx-auto">
+      <div class="flex flex-col md:flex-row h-full">
+        
+        <!-- Image Side (Left) -->
+        <div class="md:w-1/2 relative overflow-hidden h-[400px] md:h-auto">
+          <img src="assets/images/home_2.jpg"
+               alt="Maheshwari Weavers Collective"
+               class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <!-- Subtle overlay on image to blend slightly -->
+          <div class="absolute inset-0 bg-forest-900/10 pointer-events-none"></div>
         </div>
-      </section>
 
-      <!-- Categories Section with Actual Images -->
-      <section class="py-16 bg-rajasthan-sand">
-        <div class="max-w-7xl mx-auto px-4">
-          <h2 class="text-4xl font-rajasthan text-center text-rajasthan-red mb-12">Our Collections</h2>
-          
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div *ngFor="let category of categories" 
-                 class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
-              <!-- Category Image -->
-              <div class="h-64 bg-cover bg-center" 
-                   [style.background-image]="'url(' + category.image + ')'">
-                <div class="h-full w-full bg-black bg-opacity-20 flex items-center justify-center">
-                  <span class="text-white text-2xl font-rajasthan text-center px-4 bg-black bg-opacity-50 py-2 rounded-lg">{{ category.name }}</span>
-                </div>
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-rajasthan text-rajasthan-blue mb-2">{{ category.name }}</h3>
-                <p class="text-gray-600 mb-4">{{ category.description }}</p>
-                <button [routerLink]="category.route" 
-                        class="w-full bg-rajasthan-red text-white py-2 rounded-lg hover:bg-rajasthan-orange transition duration-300">
-                  Explore
+        <!-- Text Side (Right) -->
+        <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center bg-white relative">
+            <!-- Decorative background element -->
+            <div class="absolute top-0 right-0 w-32 h-32 bg-cream-100 rounded-bl-full opacity-50 pointer-events-none"></div>
+
+            <div class="relative z-10">
+              <span class="text-forest-600 uppercase tracking-widest text-xs font-bold mb-3 block">Meet Our Makers</span>
+              
+              <h3 class="text-3xl md:text-4xl font-display text-forest-900 mb-6 leading-tight">
+                Crafted by Generations
+              </h3>
+              
+              <p class="text-sage-700 text-lg leading-relaxed mb-8">
+                Every Maheshwari textile you see here is handwoven by skilled artisans who preserve centuries-old techniques. 
+                From the lightweight texture to the reversible borders and geometric motifs — each piece tells a story of heritage and dedication.
+              </p>
+              
+              <div class="flex items-center gap-4">
+                <button [routerLink]="['/team']" class="bg-forest-800 text-cream-50 px-8 py-3 rounded-full font-semibold hover:bg-forest-700 hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-forest-900/20">
+                  Learn More
                 </button>
               </div>
             </div>
-          </div>
         </div>
-      </section>
 
-      <!-- Rest of the component remains the same -->
-      <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 class="text-4xl font-rajasthan text-rajasthan-red mb-6">Centuries of Craftsmanship</h2>
-              <p class="text-lg text-gray-700 mb-6">
-                Maheshwari weaving tradition dates back to the 18th century, flourishing under the patronage of Queen Ahilyabai Holkar. 
-                Each fabric carries the legacy of master weavers and the architectural beauty of Maheshwar.
-              </p>
-              <p class="text-lg text-gray-700 mb-8">
-                Our textiles are characterized by lightweight fabric, reversible borders, and geometric motifs inspired by 
-                temple carvings and the rhythmic ghats of the Narmada river.
-              </p>
-              <button [routerLink]="['/about-maheshwari']" 
-                      class="bg-rajasthan-blue text-white px-8 py-3 rounded-lg hover:bg-rajasthan-red transition duration-300">
-                Discover Our Heritage
-              </button>
-            </div>
-            <!-- Heritage Image -->
-            <div class="h-96 bg-cover bg-center rounded-lg rajasthan-pattern" 
-                 style="background-image: url('assets/images/heritage-weaving1.jpg')">
-              <div class="h-full w-full bg-black bg-opacity-20 flex items-center justify-center rounded-lg">
-                <span class="text-white text-2xl font-rajasthan text-center px-8 py-4 rounded-lg">Traditional Pit Loom Weaving</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
+    </div>
 
-      <section class="py-16 bg-rajasthan-sand text-white">
-        <div class="max-w-4xl mx-auto text-center px-4">
-          <h2 class="text-4xl font-rajasthan mb-4">Connect With Tradition</h2>
-          <p class="text-xl mb-8 max-w-2xl mx-auto">
-            Interested in authentic Maheshwari textiles or want to learn more about our weaving traditions?
+  </div>
+</section>
+  <!-- Heritage Section -->
+  <section class="py-20 bg-cream-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="order-2 lg:order-1">
+          <span class="text-sage-600 font-semibold text-lg mb-2 block uppercase tracking-wide">Our Legacy</span>
+          <h2 class="text-5xl font-display text-forest-800 mb-6 leading-tight">Centuries of Craftsmanship</h2>
+          <p class="text-lg text-sage-700 mb-6 leading-relaxed">
+            Maheshwari weaving tradition dates back to the 18th century, flourishing under the patronage of Queen
+            Ahilyabai Holkar. Each fabric carries the legacy of master weavers and the architectural beauty of Maheshwar.
           </p>
-          <button [routerLink]="['/contact']" 
-                  class="bg-white text-rajasthan-red px-8 py-3 rounded-lg font-semibold hover:bg-rajasthan-sand transition duration-300">
-            Get In Touch
+          <p class="text-lg text-sage-700 mb-8 leading-relaxed">
+            Our textiles are characterized by lightweight fabric, reversible borders, and geometric motifs inspired by
+            temple carvings and the rhythmic ghats of the Narmada river.
+          </p>
+          <button [routerLink]="['/about-maheshwari']"
+            class="bg-forest-700 text-cream-50 px-10 py-4 rounded-full font-semibold hover:bg-sage-700 transform hover:scale-105 transition-all duration-300 shadow-lg">
+            Discover Our Heritage
           </button>
         </div>
-      </section>
+        <div class="order-1 lg:order-2">
+          <div
+            class="h-[500px] bg-cover bg-center rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-500 border-8 border-cream-200"
+            style="background-image: url('assets/images/Carousel_1(1).jpg')">
+            <div
+              class="h-full w-full bg-gradient-to-t from-forest-900/70 via-transparent to-transparent flex items-end justify-center">
+              <span
+                class="text-cream-50 text-2xl font-display text-center px-8 py-6 mb-6 bg-forest-800/60 backdrop-blur-sm rounded-2xl">Traditional
+                Pit Loom Weaving</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="py-20 bg-cream-100">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl font-display text-forest-800 mb-4">Why Choose Maheshwari</h2>
+        <p class="text-xl text-sage-700 max-w-2xl mx-auto">Authentic handwoven textiles with a rich cultural heritage
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div
+          class="bg-cream-50 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center transform hover:-translate-y-2 border border-sage-200">
+          <div
+            class="w-20 h-20 bg-gradient-to-br from-sage-500 to-forest-600 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-cream-50" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-display text-forest-800 mb-3">100% Authentic</h3>
+          <p class="text-sage-700 leading-relaxed">Genuine handwoven Maheshwari textiles crafted by skilled artisans
+            using traditional techniques</p>
+        </div>
+
+        <div
+          class="bg-cream-50 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center transform hover:-translate-y-2 border border-sage-200">
+          <div
+            class="w-20 h-20 bg-gradient-to-br from-sage-600 to-forest-700 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-cream-50" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-display text-forest-800 mb-3">Heritage Craft</h3>
+          <p class="text-sage-700 leading-relaxed">Over 200 years of weaving tradition passed down through generations
+            of master craftsmen</p>
+        </div>
+
+        <div
+          class="bg-cream-50 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center transform hover:-translate-y-2 border border-sage-200">
+          <div
+            class="w-20 h-20 bg-gradient-to-br from-forest-600 to-sage-700 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-cream-50" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-display text-forest-800 mb-3">Support Artisans</h3>
+          <p class="text-sage-700 leading-relaxed">Every purchase directly supports local weaving communities and
+            preserves traditional crafts</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="relative py-32 overflow-hidden">
+    <!-- Animated Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-forest-800 via-sage-700 to-forest-900"></div>
+    
+    <!-- Pattern Overlay -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    </div>
+    
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 left-0 w-96 h-96 bg-cream-100/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-cream-100/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+    
+    <!-- Content -->
+    <div class="relative z-10 max-w-5xl mx-auto text-center px-4">
+      <!-- Title -->
+      <h2 class="text-5xl md:text-7xl font-display text-cream-50 mb-8 leading-tight drop-shadow-lg">
+        Connect With Tradition
+      </h2>
+      
+      <!-- Subtitle -->
+      <p class="text-xl md:text-2xl text-cream-100/95 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
+        Interested in authentic Maheshwari textiles or want to learn more about our weaving traditions?
+      </p>
+      
+      <!-- CTA Button -->
+      <button [routerLink]="['/contact']" 
+              class="group relative inline-flex items-center justify-center bg-cream-50 text-forest-800 px-14 py-6 rounded-full font-bold text-xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-500 overflow-hidden">
+        <!-- Button Shine Effect -->
+        <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></span>
+        
+        <!-- Button Text -->
+        <span class="relative flex items-center space-x-3">
+          <span>Meet The Team</span>
+          <svg class="w-6 h-6 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </span>
+      </button>
+      
+      <!-- Decorative Divider -->
+      <div class="mt-16 flex items-center justify-center space-x-4">
+        <div class="w-16 h-0.5 bg-cream-100/40"></div>
+        <svg class="w-8 h-8 text-cream-100/60" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+        <div class="w-16 h-0.5 bg-cream-100/40"></div>
+      </div>
+    </div>
+  </section>
+</div>

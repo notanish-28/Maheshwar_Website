@@ -1,6 +1,16 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+interface LookbookItem {
+  id: number;
+  title: string;
+  category: 'menswear' | 'womenswear';
+  price: string;
+  images: string[];
+  activeImageIndex: number;
+  tags: string[];
+}
+
 @Component({
   selector: 'app-shop',
   standalone: true,
@@ -9,84 +19,109 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./shop.component.css']
 })
 export class ShopComponent {
-  products = [
+  
+  // Updated to include 4 views: Front, Side 1, Side 2, Back
+  collection: LookbookItem[] = [
     {
       id: 1,
-      name: 'Traditional Maheshwari Saree',
-      category: 'womenswear',
-      price: 4500,
-      material: 'Silk Cotton Blend',
-      description: 'Handwoven saree with reversible border and leher motif',
-      image: 'assets/images/saree1.jpg',
-      featured: true
+      title: 'The Asymmetric Vest Set',
+      category: 'menswear',
+      price: '₹ 4,500',
+      images: [
+        'assets/images/clothes/men_vest_front.jpeg',
+        'assets/images/clothes/men_vest_side1.jpeg',
+        'assets/images/clothes/men_vest_side2.jpeg',
+        'assets/images/clothes/men_vest_back.jpeg' // Added Back View
+      ],
+      activeImageIndex: 0,
+      tags: ['Structured', 'Cotton']
     },
     {
       id: 2,
-      name: 'Men\'s Kurta Set',
-      category: 'menswear',
-      price: 3500,
-      material: 'Pure Cotton',
-      description: 'Comfortable kurta with traditional geometric patterns',
-      image: 'assets/images/kurta1.jpg',
-      featured: false
+      title: 'Emerald Side-Tie Tunic',
+      category: 'womenswear',
+      price: '₹ 3,800',
+      images: [
+        'assets/images/clothes/women_green_tunic_front.jpeg',
+        'assets/images/clothes/women_green_tunic_side1.jpeg',
+        'assets/images/clothes/women_green_tunic_side2.jpeg',
+        'assets/images/clothes/women_green_tunic_back.jpeg' // Added Back View
+      ],
+      activeImageIndex: 0,
+      tags: ['Layering', 'Silk Blend']
     },
     {
       id: 3,
-      name: 'Maheshwari Stole',
-      category: 'accessories',
-      price: 1200,
-      material: 'Silk Cotton',
-      description: 'Lightweight stole with temple border design',
-      image: 'assets/images/stole1.jpg',
-      featured: true
+      title: 'The Paneled Lounge Set',
+      category: 'menswear',
+      price: '₹ 4,200',
+      images: [
+        'assets/images/clothes/men_green_shirt_front.jpeg',
+        'assets/images/clothes/men_green_shirt_side1.jpeg',
+        'assets/images/clothes/men_green_shirt_side2.jpeg',
+        'assets/images/clothes/men_green_shirt_back.jpeg' // Added Back View
+      ],
+      activeImageIndex: 0,
+      tags: ['Relaxed Fit', 'Geometric']
     },
     {
       id: 4,
-      name: 'Women\'s Dress Material',
+      title: 'Draped Halter Ensemble',
       category: 'womenswear',
-      price: 2800,
-      material: 'Cotton Silk',
-      description: '3-piece dress material with chatai pattern',
-      image: 'assets/images/dress-material1.jpg',
-      featured: false
+      price: '₹ 5,500',
+      images: [
+        'assets/images/clothes/women_halter_front.jpeg',
+        'assets/images/clothes/women_halter_side1.jpeg',
+        'assets/images/clothes/women_halter_side2.jpeg',
+        'assets/images/clothes/women_halter_back.jpeg' // Added Back View
+      ],
+      activeImageIndex: 0,
+      tags: ['Evening', 'Drape']
     },
     {
       id: 5,
-      name: 'Men\'s Jacket',
+      title: 'Mulberry Tie-Front Shirt',
       category: 'menswear',
-      price: 5200,
-      material: 'Wool Cotton Blend',
-      description: 'Traditional jacket with contemporary design',
-      image: 'assets/images/jacket1.jpg',
-      featured: true
+      price: '₹ 3,200',
+      images: [
+        'assets/images/clothes/men_purple_shirt_front.jpeg',
+        'assets/images/clothes/men_purple_shirt_side1.jpeg',
+        'assets/images/clothes/men_purple_shirt_side2.jpeg',
+        'assets/images/clothes/men_purple_shirt_back.jpeg' // Added Back View
+      ],
+      activeImageIndex: 0,
+      tags: ['Traditional', 'Handloom']
     },
     {
       id: 6,
-      name: 'Maheshwari Dupatta',
-      category: 'accessories',
-      price: 1800,
-      material: 'Pure Silk',
-      description: 'Elegant dupatta with kangi motif',
-      image: 'assets/images/dupatta1.jpg',
-      featured: false
+      title: 'The Bow Detail Mini',
+      category: 'womenswear',
+      price: '₹ 2,900',
+      images: [
+        'assets/images/clothes/women_mini_front.jpeg',
+        'assets/images/clothes/women_mini_side1.jpeg',
+        'assets/images/clothes/women_mini_side2.jpeg',
+        'assets/images/clothes/women_mini_back.jpeg' // Added Back View
+      ],
+      activeImageIndex: 0,
+      tags: ['Chic', 'Summer']
     }
   ];
 
-  categories = ['all', 'menswear', 'womenswear', 'accessories'];
+  categories = ['all', 'menswear', 'womenswear'];
   selectedCategory = 'all';
-  filteredProducts = this.products;
-
-  filterProducts(category: string) {
-    this.selectedCategory = category;
-    if (category === 'all') {
-      this.filteredProducts = this.products;
-    } else {
-      this.filteredProducts = this.products.filter(product => product.category === category);
-    }
+  
+  get filteredCollection() {
+    return this.selectedCategory === 'all' 
+      ? this.collection 
+      : this.collection.filter(item => item.category === this.selectedCategory);
   }
 
-  addToCart(product: any) {
-    // Implement cart functionality
-    alert(`Added ${product.name} to cart!`);
+  setCategory(cat: string) {
+    this.selectedCategory = cat;
+  }
+
+  setActiveImage(item: LookbookItem, index: number) {
+    item.activeImageIndex = index;
   }
 }
