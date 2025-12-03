@@ -4,14 +4,21 @@
     <div class="flex justify-between items-center py-5">
       <!-- Logo -->
       <div class="flex items-center space-x-3 group cursor-pointer">
-        <div class="w-12 h-12 bg-gradient-to-br from-sage-600 via-forest-700 to-sage-800 rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition duration-300">
-          <span class="text-cream-50 font-display font-bold text-xl">M</span>
-        </div>
-        <div>
-          <span class="text-2xl font-display text-forest-800 block leading-tight">Maheshwari</span>
-          <span class="text-sm text-sage-600 font-medium">Handwoven Heritage</span>
-        </div>
-      </div>
+  
+  <!-- MODIFIED: Changed h-12 to h-20 and w-auto to w-14 to fit tall image -->
+  <div class="h-20 w-14 shadow-sm transform group-hover:scale-110 transition duration-300">
+    <img 
+      src="assets/images/logo.jpg" 
+      alt="Maheshwari Logo" 
+      class="h-full w-full object-contain rounded-md"
+    >
+  </div>
+
+  <div>
+    <span class="text-2xl font-display text-forest-800 block leading-tight">Maheshwari</span>
+    <span class="text-sm text-sage-600 font-medium">Handwoven Heritage</span>
+  </div>
+</div>
 
       <!-- Desktop Menu -->
       <div class="hidden md:flex items-center space-x-2">
